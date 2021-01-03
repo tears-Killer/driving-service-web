@@ -1,0 +1,43 @@
+package com.wj.driving.service.admin;
+
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.wj.driving.model.admin.AdminVO;
+import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
+import com.wj.driving.restfulapi.dto.admin.AdminLoginDTO;
+import com.wj.driving.restfulapi.service.bizadmin.BizAdminLoginService;
+import com.wj.driving.result.admin.LoginResult;
+import com.wj.driving.util.RedisUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import java.util.UUID;
+
+@Service
+public class AdminLoginService {
+
+    @Reference
+    private BizAdminLoginService bizAdminLoginService;
+
+    @Autowired
+    private RedisUtil redisUtil;
+
+    public LoginResult checkLogin(AdminLoginDTO admin){
+        AdminDetailsDTO adminDTO = bizAdminLoginService.checkLogin(admin);
+        if(adminDTO!=null){
+            AdminVO adminVO = new AdminVO();
+            adminVO.setId(adminDTO.getId());
+            adminVO.setAccount(adminDTO.getAccount());
+            adminVO.setPassword(adminDTO.getPassword());
+            adminVO.setName(adminDTO.getName());
+            adminVO.setAuth(adminDTO.getAuth());
+            String token = UUID.randomUUID().toString();
+            redisUtil.hset(token,"id",adminVO.getId(),3600*6);
+            LoginResult result = new LoginResult();
+            result.setAdminVO(adminVO);
+            result.setToken(token);
+            return result;
+        }
+        return null;
+    }
+}
