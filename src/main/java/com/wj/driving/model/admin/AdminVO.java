@@ -7,7 +7,6 @@ import java.io.Serializable;
 public class AdminVO implements Serializable {
     private Long id;
     private String account;
-    private String password;
     private String name;
     private Integer auth;
 
@@ -25,14 +24,6 @@ public class AdminVO implements Serializable {
 
     public void setAccount(String account) {
         this.account = account;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getName() {
