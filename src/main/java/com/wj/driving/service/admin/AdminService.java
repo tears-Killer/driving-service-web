@@ -44,4 +44,12 @@ public class AdminService {
         }
         return null;
     }
+
+    public int addAdmin(AdminDetailsDTO adminDTO){
+        return bizAdminService.addAdmin(adminDTO);
+    }
+
+    public int updateAdmin(AdminDetailsDTO adminDTO){
+        return bizAdminService.updateAdmin(adminDTO);
+    }
 }

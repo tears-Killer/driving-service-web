@@ -3,15 +3,13 @@
  */
 package com.wj.driving.controller.admin;
 
+import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.result.Result;
 import com.wj.driving.result.admin.AdminResult;
 import com.wj.driving.service.admin.AdminService;
 import com.wj.driving.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName AdminController
@@ -34,5 +32,23 @@ public class AdminController {
             return ResultUtil.success(result);
         }
         return ResultUtil.fail("查询失败");
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public Result addAdmin(@RequestBody AdminDetailsDTO adminDTO){
+        int result = adminService.addAdmin(adminDTO);
+        if(result>0){
+           return ResultUtil.success(result);
+        }
+        return ResultUtil.fail("添加失败");
+    }
+
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public Result updateAdmin(@RequestBody AdminDetailsDTO adminDTO){
+        int result = adminService.updateAdmin(adminDTO);
+        if(result>0){
+            return ResultUtil.success(result);
+        }
+        return ResultUtil.fail("修改失败");
     }
 }
