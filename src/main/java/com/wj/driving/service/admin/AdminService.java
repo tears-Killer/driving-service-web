@@ -32,7 +32,9 @@ public class AdminService {
             List<AdminVO> adminVOList = adminDTOList.stream().map(item -> {
                 AdminVO adminVO = new AdminVO();
                 adminVO.setId(item.getId());
-                adminVO.setAccount(item.getAccount());
+                adminVO.setPhone(item.getPhone());
+                adminVO.setSex(item.getSex());
+                adminVO.setAge(item.getAge());
                 adminVO.setName(item.getName());
                 adminVO.setAuth(item.getAuth());
                 return adminVO;

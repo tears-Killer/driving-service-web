@@ -27,7 +27,9 @@ public class AdminLoginService {
         if(adminDTO!=null){
             AdminVO adminVO = new AdminVO();
             adminVO.setId(adminDTO.getId());
-            adminVO.setAccount(adminDTO.getAccount());
+            adminVO.setPhone(adminDTO.getPhone());
+            adminVO.setSex(adminDTO.getSex());
+            adminVO.setAge(adminDTO.getAge());
             adminVO.setName(adminDTO.getName());
             adminVO.setAuth(adminDTO.getAuth());
             String token = UUID.randomUUID().toString();
