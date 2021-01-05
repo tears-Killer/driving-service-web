@@ -1,5 +1,6 @@
 package com.wj.driving.model.admin;
 
+
 import com.wj.driving.restfulapi.enums.admin.AuthEnum;
 
 import java.io.Serializable;
@@ -8,7 +9,7 @@ public class AdminVO implements Serializable {
     private Long id;
     private String account;
     private String name;
-    private Integer auth;
+    private AuthEnum auth;
 
     public Long getId() {
         return id;
@@ -34,11 +35,11 @@ public class AdminVO implements Serializable {
         this.name = name;
     }
 
-    public Integer getAuth() {
+    public AuthEnum getAuth() {
         return auth;
     }
 
-    public void setAuth(Integer auth) {
+    public void setAuth(AuthEnum auth) {
         this.auth = auth;
     }
 }

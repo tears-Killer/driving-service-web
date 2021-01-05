@@ -3,6 +3,8 @@
  */
 package com.wj.driving.result.admin;
 
+import com.wj.driving.model.admin.AdminVO;
+
 import java.util.List;
 
 /**
@@ -13,20 +15,13 @@ import java.util.List;
  */
 public class AdminResult {
 
-    List<Object> adminBOList;
+    List<AdminVO> adminVOList;
 
-    public List<Object> getAdminBOList() {
-        return adminBOList;
+    public List<AdminVO> getAdminVOList() {
+        return adminVOList;
     }
 
-    public void setAdminBOList(List<Object> adminBOList) {
-        this.adminBOList = adminBOList;
-    }
-
-    @Override
-    public String toString() {
-        return "AdminResult{" +
-                "adminBOList=" + adminBOList +
-                '}';
+    public void setAdminVOList(List<AdminVO> adminVOList) {
+        this.adminVOList = adminVOList;
     }
 }
