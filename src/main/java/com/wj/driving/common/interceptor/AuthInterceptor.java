@@ -3,6 +3,7 @@
  */
 package com.wj.driving.common.interceptor;
 
+import com.wj.driving.exceptions.MessageCode;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;

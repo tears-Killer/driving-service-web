@@ -5,6 +5,7 @@ import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.restfulapi.dto.admin.AdminLoginDTO;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminLoginService;
+import com.wj.driving.result.BaseResult;
 import com.wj.driving.result.admin.LoginResult;
 import com.wj.driving.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,22 +24,22 @@ public class AdminLoginService {
     private RedisUtil redisUtil;
 
     public LoginResult checkLogin(AdminLoginDTO admin){
-        AdminDetailsDTO adminDTO = bizAdminLoginService.checkLogin(admin);
-        if(adminDTO!=null){
-            AdminVO adminVO = new AdminVO();
-            adminVO.setId(adminDTO.getId());
-            adminVO.setPhone(adminDTO.getPhone());
-            adminVO.setSex(adminDTO.getSex());
-            adminVO.setAge(adminDTO.getAge());
-            adminVO.setName(adminDTO.getName());
-            adminVO.setAuth(adminDTO.getAuth());
-            String token = UUID.randomUUID().toString();
-            redisUtil.hset(token,"id",adminVO.getId(),3600*6);
-            LoginResult result = new LoginResult();
-            result.setAdminVO(adminVO);
-            result.setToken(token);
-            return result;
-        }
+            AdminDetailsDTO adminDTO = bizAdminLoginService.checkLogin(admin);
+            if (adminDTO != null) {
+                AdminVO adminVO = new AdminVO();
+                adminVO.setId(adminDTO.getId());
+                adminVO.setPhone(adminDTO.getPhone());
+                adminVO.setSex(adminDTO.getSex());
+                adminVO.setAge(adminDTO.getAge());
+                adminVO.setName(adminDTO.getName());
+                adminVO.setAuth(adminDTO.getAuth());
+                String token = UUID.randomUUID().toString();
+                redisUtil.hset(token, "id", adminVO.getId(), 3600 * 6);
+                LoginResult result = new LoginResult();
+                result.setAdminVO(adminVO);
+                result.setToken(token);
+                return result;
+            }
         return null;
     }
 }

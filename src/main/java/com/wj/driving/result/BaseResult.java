@@ -4,6 +4,8 @@ import com.wj.driving.exceptions.BaseException;
 import com.wj.driving.exceptions.MessageCode;
 import com.wj.driving.exceptions.MessageErrorCode;
 
+import java.util.Date;
+
 /**
  * @ClassName BaseResult
  * @Description TODO
@@ -26,7 +28,7 @@ public class BaseResult {
     /*
      * 服务当前时间
      */
-    private String serviceTime;
+    private Date serviceTime;
     /*
      * 返回的数据
      */
@@ -35,13 +37,14 @@ public class BaseResult {
     private BaseResult(Object data){
         this.setStatus("200");
         this.setMsg("请求成功");
-        this.setServiceTime(String.valueOf(System.currentTimeMillis()));
+        this.setDesc("");
+        this.setServiceTime(getCurrentTime());
         this.setData(data);
     }
 
     private BaseResult(Exception e){
         setMsg("有异常问题");
-        setServiceTime(String.valueOf(System.currentTimeMillis()));
+        setServiceTime(getCurrentTime());
         setData(null);
         if (e instanceof BaseException) {
             BaseException baseException = (BaseException) e;
@@ -59,13 +62,16 @@ public class BaseResult {
     }
 
     private BaseResult(String msg){
-        this.setStatus(MessageErrorCode.服务器内部错误.getErrorCode());
-        this.setMsg(msg);
-        this.setDesc(MessageErrorCode.服务器内部错误.getDescription());
-        this.setServiceTime(String.valueOf(System.currentTimeMillis()));
+        this.setStatus("400");
+        this.setMsg("请求失败");
+        this.setDesc(msg);
+        this.setServiceTime(getCurrentTime());
         this.setData(null);
     }
 
+    private static Date getCurrentTime(){
+        return new Date(System.currentTimeMillis());
+    }
 
     public static BaseResult getSuccessResult(Object data) {
         return new BaseResult(data);
@@ -104,11 +110,11 @@ public class BaseResult {
         this.desc = desc;
     }
 
-    public String getServiceTime() {
+    public Date getServiceTime() {
         return serviceTime;
     }
 
-    public void setServiceTime(String serviceTime) {
+    public void setServiceTime(Date serviceTime) {
         this.serviceTime = serviceTime;
     }
 
@@ -118,5 +124,16 @@ public class BaseResult {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "status='" + status + '\'' +
+                ", msg='" + msg + '\'' +
+                ", desc='" + desc + '\'' +
+                ", serviceTime=" + serviceTime +
+                ", data=" + data +
+                '}';
     }
 }
