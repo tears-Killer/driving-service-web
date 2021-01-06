@@ -1,6 +1,3 @@
-/**
- * Copyright 2017 武汉易酒批电子商务有限公司. All rights reserved.
- */
 package com.wj.driving.common.config;
 
 import com.wj.driving.common.interceptor.AuthInterceptor;
