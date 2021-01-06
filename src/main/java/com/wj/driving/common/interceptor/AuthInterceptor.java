@@ -3,8 +3,8 @@
  */
 package com.wj.driving.common.interceptor;
 
+import com.wj.driving.result.BaseResult;
 import com.wj.driving.util.RedisUtil;
-import com.wj.driving.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -29,11 +29,11 @@ public class AuthInterceptor implements HandlerInterceptor {
         response.setContentType("text/html;charset=utf-8");
         String autoken = request.getHeader("token");
         if(autoken==null){
-            response.getWriter().println(ResultUtil.fail("请先登录验证"));
+            response.getWriter().println(BaseResult.getFailedResult("请先登陆验证"));
             return false;
         }
         if(redisUtil.hget(autoken,"id")==null){
-            response.getWriter().println(ResultUtil.fail("登陆已过期，请重新登录"));
+            response.getWriter().println(BaseResult.getFailedResult("登陆已过期，请重新登录"));
             return false;
         }
             return true;
