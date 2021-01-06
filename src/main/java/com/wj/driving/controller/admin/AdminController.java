@@ -4,6 +4,7 @@
 package com.wj.driving.controller.admin;
 
 import com.wj.driving.exceptions.MessageCode;
+import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.result.admin.AdminResult;
@@ -31,7 +32,7 @@ public class AdminController {
         if(result!=null){
             return BaseResult.getSuccessResult(result);
         }
-        return BaseResult.getFailedResult("获取信息失败");
+        return BaseResult.getFailedResult(MessageErrorCode.操作失败);
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
@@ -40,7 +41,7 @@ public class AdminController {
         if(result>0){
             return BaseResult.getSuccessResult(result);
         }
-        return BaseResult.getFailedResult("添加失败");
+        return BaseResult.getFailedResult(MessageErrorCode.操作失败);
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
@@ -49,6 +50,6 @@ public class AdminController {
         if(result>0){
             return BaseResult.getSuccessResult(result);
         }
-        return BaseResult.getFailedResult("修改失败");
+        return BaseResult.getFailedResult(MessageErrorCode.操作失败);
     }
 }

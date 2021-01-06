@@ -61,10 +61,10 @@ public class BaseResult {
         }
     }
 
-    private BaseResult(String msg){
-        this.setStatus("400");
+    private BaseResult(MessageCode messageCode){
+        this.setStatus(messageCode.getErrorCode());
         this.setMsg("请求失败");
-        this.setDesc(msg);
+        this.setDesc(messageCode.getDescription());
         this.setServiceTime(getCurrentTime());
         this.setData(null);
     }
@@ -81,8 +81,8 @@ public class BaseResult {
         return new BaseResult(e);
     }
 
-    public static BaseResult getFailedResult(String msg) {
-        return new BaseResult(msg);
+    public static BaseResult getFailedResult(MessageCode messageCode) {
+        return new BaseResult(messageCode);
     }
 
 

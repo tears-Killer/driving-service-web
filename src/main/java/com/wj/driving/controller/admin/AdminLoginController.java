@@ -1,5 +1,6 @@
 package com.wj.driving.controller.admin;
 
+import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.restfulapi.dto.admin.AdminLoginDTO;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.result.admin.LoginResult;
@@ -22,7 +23,7 @@ public class AdminLoginController {
     public BaseResult checkLogin(@RequestBody AdminLoginDTO admin){
         LoginResult result = adminLoginService.checkLogin(admin);
         if(result==null){
-          return BaseResult.getFailedResult("登陆验证失败");
+          return BaseResult.getFailedResult(MessageErrorCode.登陆验证失败);
         }
         return BaseResult.getSuccessResult(result);
     }
