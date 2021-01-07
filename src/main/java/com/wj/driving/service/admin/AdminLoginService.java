@@ -5,7 +5,6 @@ import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.restfulapi.dto.admin.AdminLoginDTO;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminLoginService;
-import com.wj.driving.result.BaseResult;
 import com.wj.driving.result.admin.LoginResult;
 import com.wj.driving.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class AdminLoginService {
                 adminVO.setName(adminDTO.getName());
                 adminVO.setAuth(adminDTO.getAuth());
                 String token = UUID.randomUUID().toString();
-                redisUtil.hset(token, "id", adminVO.getId(), 3600 * 6);
+                redisUtil.hset(token, "id", adminVO.getId(), 1200);
                 LoginResult result = new LoginResult();
                 result.setAdminVO(adminVO);
                 result.setToken(token);
