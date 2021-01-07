@@ -1,9 +1,5 @@
-/**
- * Copyright 2017 武汉易酒批电子商务有限公司. All rights reserved.
- */
 package com.wj.driving.controller.admin;
 
-import com.wj.driving.exceptions.MessageCode;
 import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.result.BaseResult;
