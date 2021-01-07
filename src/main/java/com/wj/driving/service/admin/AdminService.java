@@ -1,6 +1,7 @@
 package com.wj.driving.service.admin;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.wj.driving.model.admin.AdminUpdatePwdVO;
 import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminService;
@@ -48,5 +49,12 @@ public class AdminService {
 
     public int updateAdmin(AdminDetailsDTO adminDTO){
         return bizAdminService.updateAdmin(adminDTO);
+    }
+
+    public int updateAdminPWD(AdminUpdatePwdVO adminUpdatePwdVO){
+        AdminDetailsDTO adminDTO = new AdminDetailsDTO();
+        adminDTO.setId(adminUpdatePwdVO.getId());
+        adminDTO.setPassword(adminUpdatePwdVO.getOldPassword());
+        return bizAdminService.updateAdminPWD(adminDTO,adminUpdatePwdVO.getNewPassword());
     }
 }

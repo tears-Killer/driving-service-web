@@ -1,6 +1,7 @@
 package com.wj.driving.controller.admin;
 
 import com.wj.driving.exceptions.MessageErrorCode;
+import com.wj.driving.model.admin.AdminUpdatePwdVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.result.admin.AdminResult;
@@ -47,5 +48,14 @@ public class AdminController {
             return BaseResult.getSuccessResult(result);
         }
         return BaseResult.getFailedResult(MessageErrorCode.操作失败);
+    }
+
+    @RequestMapping(value = "/updatePwd",method = RequestMethod.POST)
+    public BaseResult updateAdminPassword(@RequestBody AdminUpdatePwdVO adminUpdatePwdVO){
+        int result = adminService.updateAdminPWD(adminUpdatePwdVO);
+        if(result>0){
+            return BaseResult.getSuccessResult(result);
+        }
+        return BaseResult.getFailedResult(MessageErrorCode.密码修改失败);
     }
 }
