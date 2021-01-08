@@ -23,4 +23,7 @@ public class MessageErrorCode {
     public static final MessageCode 操作失败 = new MessageCode("服务器内部错误", "500");
 
     public static final MessageCode 密码修改失败 = new MessageCode("原密码输入错误", "400");
+
+    public MessageErrorCode() {
+    }
 }
