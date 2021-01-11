@@ -14,6 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.Objects;
+
 /**
  * @ClassName TencentCloudApiUtil
  * @Description TODO
@@ -26,44 +28,29 @@ public class TencentCloudApiUtil {
     /**
      * 腾讯云访问密钥
      */
-    @Value("${url.outside.tencentcloudsdk.secretId}")
-    private static String secretId;
+    private static final String secretId = "AKIDbz3FEIwyTljjY8h8H1tx10jxHKFwemvd";
+    private static final String secretKey = "ngKGvbtXQQFMEsGWYchW4Ulp2tRr1vDQ";
+    private static final String region = "ap-beijing";
 
-    @Value("${url.outside.tencentcloudsdk.secretKey}")
-    private static String secretKey;
 
-    public static String setImageUrl(String region,String imageUrl){
-        try{
-            OcrClient client = getOcrClient(region, secretId, secretKey);
+    public static String getBusinessLicenseInfo(String imageUrl) {
+        try {
+            OcrClient client = getOcrClient(secretId, secretKey);
+
             BizLicenseOCRRequest req = new BizLicenseOCRRequest();
             req.setImageUrl(imageUrl);
+            req.setImageBase64(imageUrl);
 
             BizLicenseOCRResponse resp = client.BizLicenseOCR(req);
-
             return BizLicenseOCRResponse.toJsonString(resp);
         } catch (TencentCloudSDKException e) {
-            LOGGER.warn("腾讯云营业执照识别错误",e);
+            LOGGER.error("腾讯云营业执照识别错误", e);
         }
         return null;
     }
 
-    public static String setImageBase64(String region,String imageBase64){
-        try{
-            OcrClient client = getOcrClient(region, secretId, secretKey);
-            BizLicenseOCRRequest req = new BizLicenseOCRRequest();
-            req.setImageBase64(imageBase64);
-
-            BizLicenseOCRResponse resp = client.BizLicenseOCR(req);
-
-            return BizLicenseOCRResponse.toJsonString(resp);
-        } catch (TencentCloudSDKException e) {
-            LOGGER.warn("腾讯云营业执照识别错误",e);
-        }
-        return null;
-    }
-
-    private static OcrClient getOcrClient(String region,String secretId,String secretKey){
-        Credential cred = new Credential(secretId,secretKey);
+    private static OcrClient getOcrClient(String secretId, String secretKey) {
+        Credential cred = new Credential(secretId, secretKey);
 
         HttpProfile httpProfile = new HttpProfile();
         httpProfile.setEndpoint("ocr.tencentcloudapi.com");
@@ -71,9 +58,6 @@ public class TencentCloudApiUtil {
         ClientProfile clientProfile = new ClientProfile();
         clientProfile.setHttpProfile(httpProfile);
 
-        if(region==null){
-            region = "ap-beijing";
-        }
 
         OcrClient client = new OcrClient(cred, region, clientProfile);
 

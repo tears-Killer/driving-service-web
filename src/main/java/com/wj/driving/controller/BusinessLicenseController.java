@@ -6,13 +6,12 @@ package com.wj.driving.controller;
 import com.wj.driving.service.BizBusinessLicenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * @ClassName BusinessLicenseController
@@ -28,13 +27,14 @@ public class BusinessLicenseController {
 
 
     @RequestMapping(value = "/toupload")
-    public String toUpload(){
+    public String toUpload() {
         return "upload";
     }
-    @RequestMapping(value = "/getlicense",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/getlicense", method = RequestMethod.POST)
     @ResponseBody
-    public String getBusinessLicenseInfo(MultipartFile file) throws IOException {
-        String resultStr = bizBusinessLicenseService.getBusinessLicenseInfo(file);
-        return resultStr;
+    public String getBusinessLicenseInfo(@RequestParam("imagePath") String imagePath) throws IOException {
+        System.out.println("imagePath---------"+imagePath);
+        return bizBusinessLicenseService.getBusinessLicenseInfo(imagePath);
     }
 }

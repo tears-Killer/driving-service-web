@@ -24,28 +24,9 @@ import java.util.Base64;
 public class BizBusinessLicenseService {
 
 
-    public String getBusinessLicenseInfo(MultipartFile file) throws IOException {
-        String path = "D:/photos/";
-        String fileName = file.getOriginalFilename();
-        byte[] data = null;
-        File targetFile = new File(path);
-        if (!targetFile.exists()) {
-            targetFile.mkdirs();
-        }
-        File saveFile = new File(targetFile, fileName);
-        file.transferTo(saveFile);
-        try (InputStream in = new FileInputStream(path)) {
-            data = new byte[in.available()];
-            in.read(data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // 返回Base64编码过的字节数组字符串
-        System.out.println("本地图片转换Base64: ");
-        System.out.println(Base64.getEncoder().encodeToString(data));
-        String s = Base64.getEncoder().encodeToString(data);
-        String resultStr = TencentCloudApiUtil.setImageBase64(null, s);
-        System.out.println(resultStr);
+    public String getBusinessLicenseInfo(String imagePath) throws IOException {
+
+        String resultStr = TencentCloudApiUtil.getBusinessLicenseInfo(imagePath);
         return resultStr;
 
     }
