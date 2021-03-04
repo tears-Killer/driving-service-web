@@ -1,5 +1,7 @@
 package com.wj.driving.exceptions;
 
+import com.wj.driving.exceptions.MessageCode;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 

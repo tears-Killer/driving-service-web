@@ -1,6 +1,5 @@
 package com.wj.driving.common.interceptor;
 
-import com.wj.driving.exceptions.MessageCode;
 import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.util.RedisUtil;
