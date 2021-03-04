@@ -11,7 +11,8 @@ public class AdminVO implements Serializable {
     private String sex;
     private Integer age;
     private String name;
-    private AuthEnum auth;
+    private Integer auth;
+    private String authName;
 
     public Long getId() {
         return id;
@@ -53,11 +54,32 @@ public class AdminVO implements Serializable {
         this.name = name;
     }
 
-    public AuthEnum getAuth() {
+    public Integer getAuth() {
         return auth;
     }
 
-    public void setAuth(AuthEnum auth) {
+    public void setAuth(Integer auth) {
         this.auth = auth;
+    }
+
+    public String getAuthName() {
+        return authName;
+    }
+
+    public void setAuthName(String authName) {
+        this.authName = authName;
+    }
+
+    @Override
+    public String toString() {
+        return "AdminVO{" +
+                "id=" + id +
+                ", phone='" + phone + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", name='" + name + '\'' +
+                ", auth=" + auth +
+                ", authName='" + authName + '\'' +
+                '}';
     }
 }

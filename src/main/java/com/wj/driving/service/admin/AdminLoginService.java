@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.restfulapi.dto.admin.AdminLoginDTO;
+import com.wj.driving.restfulapi.enums.admin.AuthEnum;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminLoginService;
 import com.wj.driving.result.admin.LoginResult;
 import com.wj.driving.util.RedisUtil;
@@ -32,6 +33,7 @@ public class AdminLoginService {
                 adminVO.setAge(adminDTO.getAge());
                 adminVO.setName(adminDTO.getName());
                 adminVO.setAuth(adminDTO.getAuth());
+                adminVO.setAuthName(AuthEnum.getSourceType(adminDTO.getAuth()));
                 String token = UUID.randomUUID().toString();
                 redisUtil.hset(token, "id", adminVO.getId(), 3600);
                 LoginResult result = new LoginResult();
