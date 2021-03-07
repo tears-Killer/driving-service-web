@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.wj.driving.model.admin.AdminUpdatePwdVO;
 import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
+import com.wj.driving.restfulapi.enums.admin.AuthEnum;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminService;
 import com.wj.driving.result.admin.AdminResult;
 import org.springframework.stereotype.Service;
@@ -28,16 +29,17 @@ public class AdminService {
         AdminResult result = new AdminResult();
         if(adminDTOList!=null) {
             List<AdminVO> adminVOList = adminDTOList.stream().map(item -> {
-                AdminVO adminVO = new AdminVO();
+                AdminVO adminVO  =new AdminVO();
                 adminVO.setId(item.getId());
                 adminVO.setPhone(item.getPhone());
                 adminVO.setSex(item.getSex());
                 adminVO.setAge(item.getAge());
                 adminVO.setName(item.getName());
                 adminVO.setAuth(item.getAuth());
+                adminVO.setAuthName(AuthEnum.getSourceType(adminVO.getAuth()));
                 return adminVO;
             }).collect(Collectors.toList());
-            result.setAdminVOList(adminVOList);
+            result.setList(adminVOList);
             return result;
         }
         return null;

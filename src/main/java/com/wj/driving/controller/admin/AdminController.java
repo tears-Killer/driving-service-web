@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @Author wangjian
  * @Date 2021/1/5 13:49
  */
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8888")
 @RestController
 @RequestMapping("/admin")
 public class AdminController {

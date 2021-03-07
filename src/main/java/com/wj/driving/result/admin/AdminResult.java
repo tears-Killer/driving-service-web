@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class AdminResult {
 
-    List<AdminVO> adminVOList;
+    List<AdminVO> list;
 
-    public List<AdminVO> getAdminVOList() {
-        return adminVOList;
+    public List<AdminVO> getList() {
+        return list;
     }
 
-    public void setAdminVOList(List<AdminVO> adminVOList) {
-        this.adminVOList = adminVOList;
+    public void setList(List<AdminVO> list) {
+        this.list = list;
     }
 }
