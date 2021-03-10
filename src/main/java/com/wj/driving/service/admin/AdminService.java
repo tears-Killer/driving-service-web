@@ -59,4 +59,9 @@ public class AdminService {
         adminDTO.setPassword(adminUpdatePwdVO.getOldPassword());
         return bizAdminService.updateAdminPWD(adminDTO,adminUpdatePwdVO.getNewPassword());
     }
+
+    public int deleteAdmin(Long id){
+        return bizAdminService.deleteAdmin(id);
+    }
+
 }

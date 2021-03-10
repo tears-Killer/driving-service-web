@@ -3,11 +3,15 @@ package com.wj.driving.common.interceptor;
 import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.util.RedisUtil;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Logger;
 
 /**
  * @ClassName AuthInterceptor
@@ -16,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  * @Date 2020/12/30 16:26
  */
 public class AuthInterceptor implements HandlerInterceptor {
-
 
     @Autowired
     private RedisUtil redisUtil;
@@ -36,4 +39,5 @@ public class AuthInterceptor implements HandlerInterceptor {
         }
             return true;
     }
+
 }

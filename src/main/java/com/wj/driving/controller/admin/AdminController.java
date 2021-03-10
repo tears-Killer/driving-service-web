@@ -58,4 +58,13 @@ public class AdminController {
         }
         return BaseResult.getFailedResult(MessageErrorCode.密码修改失败);
     }
+
+    @RequestMapping(value = "/delete",method = RequestMethod.DELETE)
+    public BaseResult deleteAdmin(@RequestBody AdminDetailsDTO adminDTO){
+        int result = adminService.deleteAdmin(adminDTO.getId());
+        if(result>0){
+            return BaseResult.getSuccessResult(result);
+        }
+        return BaseResult.getFailedResult(MessageErrorCode.操作失败);
+    }
 }
