@@ -1,5 +1,7 @@
 package com.wj.driving.common.interceptor;
 
+import com.alibaba.dubbo.common.json.JSONObject;
+import com.google.gson.JsonObject;
 import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.util.RedisUtil;
@@ -27,17 +29,34 @@ public class AuthInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=utf-8");
+        response.setContentType("application/json");
         String autoken = request.getHeader("token");
         if(autoken==null){
-            response.getWriter().println(BaseResult.getFailedResult(MessageErrorCode.请求拦截));
+            response.getWriter().print(BaseResult.getFailedResult(MessageErrorCode.请求拦截));
             return false;
         }
         if(redisUtil.hget(autoken,"id")==null){
-            response.getWriter().println(BaseResult.getFailedResult(MessageErrorCode.登陆过期));
+            BaseResult.getFailedResult(MessageErrorCode.登陆过期);
+//            response.getWriter().print(JSONObject);
             return false;
         }
             return true;
+    }
+
+    private void returnJson(HttpServletResponse response, String json){
+        PrintWriter writer = null;
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=utf-8");
+        try {
+            writer = response.getWriter();
+            writer.print(json);
+
+        } catch (IOException e) {
+//            LOGGER.error("response error",e);
+        } finally {
+            if (writer != null)
+                writer.close();
+        }
     }
 
 }
