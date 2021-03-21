@@ -2,6 +2,7 @@ package com.wj.driving.controller.user;
 
 import com.wj.driving.restfulapi.dto.user.UserDTO;
 import com.wj.driving.result.BaseResult;
+import com.wj.driving.result.user.UserResult;
 import com.wj.driving.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,9 +19,7 @@ public class UserController {
 
     @PostMapping(value = "/selectPage")
     public BaseResult getUserList(){
-        System.out.println("1111111");
-        List<UserDTO> result = userService.getUserList();
-        System.out.println("======"+result);
+        UserResult result = userService.getUserList();
         return BaseResult.getSuccessResult(result);
     }
 }
