@@ -11,7 +11,6 @@ import com.wj.driving.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import java.util.UUID;
 
 @Service

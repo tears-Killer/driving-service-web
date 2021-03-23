@@ -6,6 +6,7 @@ import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.restfulapi.enums.admin.AuthEnum;
 import com.wj.driving.restfulapi.request.admin.AdminSearchRequest;
+import com.wj.driving.restfulapi.result.PageResult;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminService;
 import com.wj.driving.result.admin.AdminResult;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,10 @@ public class AdminService {
     private BizAdminService bizAdminService;
 
     public AdminResult getAllAdmin(AdminSearchRequest request){
-        List<AdminDetailsDTO> adminDTOList = bizAdminService.getAllAdmin(request);
+        PageResult<AdminDetailsDTO> pageResult = bizAdminService.getAllAdmin(request);
         AdminResult result = new AdminResult();
-        if(adminDTOList!=null) {
-            List<AdminVO> adminVOList = adminDTOList.stream().map(item -> {
+        if(pageResult.getList() != null) {
+            List<AdminVO> adminVOList = pageResult.getList().stream().map(item -> {
                 AdminVO adminVO  =new AdminVO();
                 adminVO.setId(item.getId());
                 adminVO.setPhone(item.getPhone());
@@ -42,6 +43,7 @@ public class AdminService {
                 return adminVO;
             }).collect(Collectors.toList());
             result.setList(adminVOList);
+            result.setTotalCount(pageResult.getTotalCount());
             return result;
         }
         return null;

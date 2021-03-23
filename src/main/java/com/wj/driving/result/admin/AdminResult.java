@@ -15,7 +15,9 @@ import java.util.List;
  */
 public class AdminResult {
 
-    List<AdminVO> list;
+    private List<AdminVO> list;
+
+    private Integer totalCount;
 
     public List<AdminVO> getList() {
         return list;
@@ -23,5 +25,13 @@ public class AdminResult {
 
     public void setList(List<AdminVO> list) {
         this.list = list;
+    }
+
+    public Integer getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(Integer totalCount) {
+        this.totalCount = totalCount;
     }
 }

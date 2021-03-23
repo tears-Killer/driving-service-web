@@ -1,8 +1,6 @@
 package com.wj.driving.model.admin;
 
 
-import com.wj.driving.restfulapi.enums.admin.AuthEnum;
-
 import java.io.Serializable;
 
 public class AdminVO implements Serializable {
