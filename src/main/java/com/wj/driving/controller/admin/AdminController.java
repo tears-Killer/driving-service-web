@@ -3,6 +3,7 @@ package com.wj.driving.controller.admin;
 import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.model.admin.AdminUpdatePwdVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
+import com.wj.driving.restfulapi.request.AdminSearchRequest;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.result.admin.AdminResult;
 import com.wj.driving.service.admin.AdminService;
@@ -24,8 +25,8 @@ public class AdminController {
     private AdminService adminService;
 
     @RequestMapping(value = "/getall",method = RequestMethod.POST)
-    public BaseResult getAllAdmin(){
-        AdminResult result = adminService.getAllAdmin();
+    public BaseResult getAllAdmin(@RequestBody AdminSearchRequest request){
+        AdminResult result = adminService.getAllAdmin(request);
         if(result!=null){
             return BaseResult.getSuccessResult(result);
         }

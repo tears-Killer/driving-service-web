@@ -5,6 +5,7 @@ import com.wj.driving.model.admin.AdminUpdatePwdVO;
 import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.restfulapi.enums.admin.AuthEnum;
+import com.wj.driving.restfulapi.request.AdminSearchRequest;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminService;
 import com.wj.driving.result.admin.AdminResult;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * @ClassName AdminService
- * @Description TODO
+ * @Description
  * @Author wangjian
  * @Date 2021/1/5 11:54
  */
@@ -24,8 +25,8 @@ public class AdminService {
     @Reference
     private BizAdminService bizAdminService;
 
-    public AdminResult getAllAdmin(){
-        List<AdminDetailsDTO> adminDTOList = bizAdminService.getAllAdmin();
+    public AdminResult getAllAdmin(AdminSearchRequest request){
+        List<AdminDetailsDTO> adminDTOList = bizAdminService.getAllAdmin(request);
         AdminResult result = new AdminResult();
         if(adminDTOList!=null) {
             List<AdminVO> adminVOList = adminDTOList.stream().map(item -> {
@@ -35,6 +36,7 @@ public class AdminService {
                 adminVO.setSex(item.getSex());
                 adminVO.setAge(item.getAge());
                 adminVO.setName(item.getName());
+                adminVO.setIdCard(item.getIdCard());
                 adminVO.setAuth(item.getAuth());
                 adminVO.setAuthName(AuthEnum.getSourceType(adminVO.getAuth()));
                 return adminVO;

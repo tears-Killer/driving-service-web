@@ -6,12 +6,21 @@ import com.wj.driving.restfulapi.enums.admin.AuthEnum;
 import java.io.Serializable;
 
 public class AdminVO implements Serializable {
+
     private Long id;
+
     private String phone;
+
     private String sex;
+
     private Integer age;
+
     private String name;
+
+    private String idCard;
+
     private Integer auth;
+
     private String authName;
 
     public Long getId() {
@@ -54,6 +63,14 @@ public class AdminVO implements Serializable {
         this.name = name;
     }
 
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
     public Integer getAuth() {
         return auth;
     }
@@ -78,6 +95,7 @@ public class AdminVO implements Serializable {
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
                 ", name='" + name + '\'' +
+                ", idCard='" + idCard + '\'' +
                 ", auth=" + auth +
                 ", authName='" + authName + '\'' +
                 '}';
