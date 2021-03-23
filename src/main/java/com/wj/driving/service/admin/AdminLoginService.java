@@ -35,7 +35,7 @@ public class AdminLoginService {
                 adminVO.setAuth(adminDTO.getAuth());
                 adminVO.setAuthName(AuthEnum.getSourceType(adminDTO.getAuth()));
                 String token = UUID.randomUUID().toString();
-                redisUtil.hset(token, "id", adminVO.getId(), 20);
+                redisUtil.hset(token, "id", adminVO.getId(), 60*60);
                 LoginResult result = new LoginResult();
                 result.setAdminVO(adminVO);
                 result.setToken(token);
