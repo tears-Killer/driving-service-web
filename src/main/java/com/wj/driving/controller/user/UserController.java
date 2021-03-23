@@ -1,6 +1,7 @@
 package com.wj.driving.controller.user;
 
 import com.wj.driving.restfulapi.dto.user.UserDTO;
+import com.wj.driving.restfulapi.request.user.UserSearchRequest;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.result.user.UserResult;
 import com.wj.driving.service.user.UserService;
@@ -18,8 +19,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping(value = "/selectPage")
-    public BaseResult getUserList(){
-        UserResult result = userService.getUserList();
+    public BaseResult getUserList(@RequestBody UserSearchRequest request){
+        UserResult result = userService.getUserList(request);
         return BaseResult.getSuccessResult(result);
     }
 }
