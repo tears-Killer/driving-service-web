@@ -11,6 +11,8 @@ import com.wj.driving.service.useraddress.UserAddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @ClassName UserAddressController
  * @Description 客户目的地管理
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @CrossOrigin(origins = "http://localhost:8888")
 @RestController
-@RequestMapping("/useraddress")
+@RequestMapping(value = "/useraddress")
 public class UserAddressController {
 
     @Autowired
@@ -31,4 +33,10 @@ public class UserAddressController {
         return BaseResult.getSuccessResult(result);
     }
 
+    @PostMapping(value = "/commonAddressList")
+    public BaseResult getCommonAddressList(@RequestBody UserAddressDTO userAddressDTO){
+        System.out.println(userAddressDTO.getUserId());
+        List<UserAddressDTO> commonlyAddressList = userAddressService.getCommonlyAddressList(userAddressDTO);
+        return BaseResult.getSuccessResult(commonlyAddressList);
+    }
 }

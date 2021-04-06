@@ -10,6 +10,8 @@ import com.wj.driving.restfulapi.result.PageResult;
 import com.wj.driving.restfulapi.service.useraddress.IUserAddressService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @ClassName useraddress
  * @Description 客户目的地管理
@@ -24,6 +26,10 @@ public class UserAddressService {
 
     public PageResult<UserAddressDTO> getUserAddressList(UserAddressRequestSearch request){
        return userAddressService.selectPage(request);
+    }
+
+    public List<UserAddressDTO> getCommonlyAddressList(UserAddressDTO userAddressDTO){
+        return userAddressService.getcommonlyAddressList(userAddressDTO);
     }
 
 }
