@@ -8,8 +8,6 @@ import com.wj.driving.restfulapi.service.user.IUserService;
 import com.wj.driving.result.user.UserResult;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserService {
 
