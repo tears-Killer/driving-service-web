@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2021/1/6 13:38
  */
 @RestController
-public class ErrorsController{
+public class ErrorsController implements ErrorController{
 
     private static final String ERROR_PATH = "/error";
 
@@ -25,4 +25,8 @@ public class ErrorsController{
         return BaseResult.getFailedResult(MessageErrorCode.NOT_FOUND);
     }
 
+    @Override
+    public String getErrorPath() {
+        return ERROR_PATH;
+    }
 }
