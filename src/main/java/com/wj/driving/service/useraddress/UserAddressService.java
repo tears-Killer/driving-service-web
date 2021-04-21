@@ -32,4 +32,11 @@ public class UserAddressService {
         return userAddressService.getcommonlyAddressList(userAddressDTO);
     }
 
+    public void setDefaultAddress(UserAddressDTO userAddressDTO){
+        userAddressService.setDefaultAddress(userAddressDTO);
+    }
+
+    public void deleteAddress(UserAddressDTO userAddressDTO){
+        userAddressService.deleteAddress(userAddressDTO);
+    }
 }

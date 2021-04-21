@@ -42,6 +42,13 @@ public class BaseResult {
         this.setData(data);
     }
 
+    private BaseResult(){
+        this.setStatus("200");
+        this.setMsg("请求成功");
+        this.setDesc("");
+        this.setServiceTime(getCurrentTime());
+    }
+
     private BaseResult(Exception e){
         setMsg("有异常问题");
         setServiceTime(getCurrentTime());
@@ -77,6 +84,9 @@ public class BaseResult {
         return new BaseResult(data);
     }
 
+    public static BaseResult getSuccessResult() {
+        return new BaseResult();
+    }
     public static BaseResult getFailedResult(Exception e) {
         return new BaseResult(e);
     }

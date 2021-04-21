@@ -21,7 +21,7 @@ import java.util.List;
  */
 @CrossOrigin(origins = "http://localhost:8888")
 @RestController
-@RequestMapping(value = "/useraddress")
+@RequestMapping(value = "/userAddress")
 public class UserAddressController {
 
     @Autowired
@@ -35,8 +35,20 @@ public class UserAddressController {
 
     @PostMapping(value = "/commonAddressList")
     public BaseResult getCommonAddressList(@RequestBody UserAddressDTO userAddressDTO){
-        System.out.println(userAddressDTO.getUserId());
         List<UserAddressDTO> commonlyAddressList = userAddressService.getCommonlyAddressList(userAddressDTO);
         return BaseResult.getSuccessResult(commonlyAddressList);
     }
+
+    @PostMapping(value = "/setDefaultAddress")
+    public BaseResult setDefaultAddress(@RequestBody UserAddressDTO userAddressDTO){
+        userAddressService.setDefaultAddress(userAddressDTO);
+        return BaseResult.getSuccessResult();
+    }
+
+    @PostMapping(value = "/deleteAddress")
+    public BaseResult deleteAddress(@RequestBody UserAddressDTO userAddressDTO){
+        userAddressService.deleteAddress(userAddressDTO);
+        return BaseResult.getSuccessResult();
+    }
+
 }
