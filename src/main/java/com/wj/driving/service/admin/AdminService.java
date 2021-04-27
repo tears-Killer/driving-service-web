@@ -5,7 +5,7 @@ import com.wj.driving.model.admin.AdminUpdatePwdVO;
 import com.wj.driving.model.admin.AdminVO;
 import com.wj.driving.restfulapi.dto.admin.AdminDetailsDTO;
 import com.wj.driving.restfulapi.enums.admin.AuthEnum;
-import com.wj.driving.restfulapi.request.admin.AdminSearchRequest;
+import com.wj.driving.restfulapi.request.admin.AdminRequestSearch;
 import com.wj.driving.restfulapi.result.PageResult;
 import com.wj.driving.restfulapi.service.bizadmin.BizAdminService;
 import com.wj.driving.result.admin.AdminResult;
@@ -26,7 +26,7 @@ public class AdminService {
     @Reference
     private BizAdminService bizAdminService;
 
-    public AdminResult getAllAdmin(AdminSearchRequest request){
+    public AdminResult getAllAdmin(AdminRequestSearch request){
         PageResult<AdminDetailsDTO> pageResult = bizAdminService.getAllAdmin(request);
         AdminResult result = new AdminResult();
         if(pageResult.getList() != null) {
