@@ -32,8 +32,7 @@ public class AuthInterceptor implements HandlerInterceptor {
             return false;
         }
         if(redisUtil.hget(autoken,"id")==null){
-            BaseResult.getFailedResult(MessageErrorCode.登陆过期);
-//            response.getWriter().print(JSONObject);
+            response.getWriter().print(BaseResult.getFailedResult(MessageErrorCode.登陆过期));
             return false;
         }
             return true;
