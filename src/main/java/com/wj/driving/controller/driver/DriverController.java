@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
  * @author wangjian
  * @since 2021/4/27
  */
-@CrossOrigin(origins = "http://localhost:8888")
 @RestController
 @RequestMapping("/driver")
 public class DriverController {

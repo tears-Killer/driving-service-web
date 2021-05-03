@@ -7,7 +7,6 @@ import com.wj.driving.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:8888")
 @RestController
 @RequestMapping("/user")
 public class UserController {

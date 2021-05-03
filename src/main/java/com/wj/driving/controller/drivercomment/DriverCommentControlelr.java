@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @author wangjian
  * @since 2021/4/28
  */
-@CrossOrigin(origins = "http://localhost:8888")
 @RestController
 @RequestMapping("/drivercomment")
 public class DriverCommentControlelr {

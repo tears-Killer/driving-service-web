@@ -19,7 +19,6 @@ import java.util.List;
  * @Author wangjian
  * @Date 2021/4/2 14:25
  */
-@CrossOrigin(origins = "http://localhost:8888")
 @RestController
 @RequestMapping(value = "/userAddress")
 public class UserAddressController {

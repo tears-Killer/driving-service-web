@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * @ClassName MvcConfig
- * @Description TODO
+ * @Description 拦截器
  * @Author wangjian
  * @Date 2020/12/30 16:34
  */
