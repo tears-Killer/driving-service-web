@@ -26,4 +26,7 @@ public class UserOrderService {
         return pageResult;
     }
 
+    public int updateOrderInfo(OrderDetailsDTO orderDetailsDTO){
+        return userOrderService.updateOrderInfo(orderDetailsDTO);
+    }
 }

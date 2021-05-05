@@ -28,9 +28,9 @@ public class UserController {
     public BaseResult updateUserInfo(@RequestBody UserDTO userDTO){
         int result = userService.updateUserInfo(userDTO);
         if(result>0){
-            return BaseResult.getFailedResult("修改用户信息失败");
+            return BaseResult.getSuccessResult();
         }
-        return BaseResult.getSuccessResult();
+        return BaseResult.getFailedResult("修改用户信息失败");
     }
 
     @PostMapping(value = "/updateState")

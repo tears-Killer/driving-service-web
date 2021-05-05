@@ -6,10 +6,7 @@ import com.wj.driving.restfulapi.result.PageResult;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.service.userorder.UserOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -33,4 +30,12 @@ public class UserOrderController {
         return BaseResult.getSuccessResult(pageResult);
     }
 
+    @PostMapping(value = "/update")
+    public BaseResult updateOrderInfo(@RequestBody OrderDetailsDTO orderDetailsDTO){
+        int result = userOrderService.updateOrderInfo(orderDetailsDTO);
+        if(result>0){
+            return BaseResult.getSuccessResult();
+        }
+        return BaseResult.getFailedResult("修改订单信息失败");
+    }
 }
