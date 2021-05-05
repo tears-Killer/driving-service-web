@@ -1,12 +1,11 @@
 package com.wj.driving.controller.drivercomment;
 
 import com.wj.driving.restfulapi.dto.drivercomment.DriverCommentDetailsDTO;
-import com.wj.driving.restfulapi.request.DriverCommentRequest;
+import com.wj.driving.restfulapi.request.driver.DriverCommentRequest;
 import com.wj.driving.restfulapi.result.PageResult;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.service.drivercomment.DriverCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

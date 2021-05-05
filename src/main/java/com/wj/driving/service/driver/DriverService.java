@@ -5,7 +5,6 @@ import com.wj.driving.restfulapi.dto.driver.DriverDetailsDTO;
 import com.wj.driving.restfulapi.request.driver.DriverRequestSearch;
 import com.wj.driving.restfulapi.result.PageResult;
 import com.wj.driving.restfulapi.service.driver.IDriverService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**

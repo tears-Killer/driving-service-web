@@ -76,6 +76,13 @@ public class BaseResult {
         this.setData(null);
     }
 
+    private BaseResult(String msg){
+        this.setStatus("500");
+        this.setMsg("请求失败");
+        this.setDesc(msg);
+        this.setServiceTime(getCurrentTime());
+        this.setData(null);
+    }
     private static Date getCurrentTime(){
         return new Date(System.currentTimeMillis());
     }
@@ -95,7 +102,9 @@ public class BaseResult {
         return new BaseResult(messageCode);
     }
 
-
+    public static BaseResult getFailedResult(String msg){
+        return new BaseResult(msg);
+    }
     public String getStatus() {
         return status;
     }

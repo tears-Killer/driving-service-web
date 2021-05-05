@@ -1,6 +1,5 @@
 package com.wj.driving.common.config;
 
-import com.alibaba.dubbo.config.ConsumerConfig;
 import com.wj.driving.common.interceptor.AuthInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

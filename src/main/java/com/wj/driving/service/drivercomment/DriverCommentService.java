@@ -2,7 +2,7 @@ package com.wj.driving.service.drivercomment;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.wj.driving.restfulapi.dto.drivercomment.DriverCommentDetailsDTO;
-import com.wj.driving.restfulapi.request.DriverCommentRequest;
+import com.wj.driving.restfulapi.request.driver.DriverCommentRequest;
 import com.wj.driving.restfulapi.result.PageResult;
 import com.wj.driving.restfulapi.service.drivercomment.IDriverCommentService;
 import org.springframework.stereotype.Service;

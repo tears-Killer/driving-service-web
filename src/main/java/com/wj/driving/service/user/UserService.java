@@ -21,4 +21,12 @@ public class UserService {
         result.setTotalCount(pageResult.getTotalCount());
         return result;
     }
+
+    public int updateUserInfo(UserDTO userDTO){
+        return userService.updateUser(userDTO);
+    }
+
+    public int updateUserState(UserDTO userDTO){
+        return userService.updateUserState(userDTO);
+    }
 }

@@ -1,7 +1,6 @@
 package com.wj.driving.common.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
-import com.wj.driving.exceptions.BaseException;
 import com.wj.driving.exceptions.MessageErrorCode;
 import com.wj.driving.result.BaseResult;
 import com.wj.driving.util.RedisUtil;
@@ -13,8 +12,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * @ClassName AuthInterceptor
@@ -34,7 +31,6 @@ public class AuthInterceptor implements HandlerInterceptor {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
         String autoken = request.getHeader("token");
-        log.info("token:{}",autoken);
         if(StringUtils.isBlank(autoken)){
             response.getWriter().print(JSONObject.toJSONString(BaseResult.getFailedResult(MessageErrorCode.请求拦截)));
             return false;
