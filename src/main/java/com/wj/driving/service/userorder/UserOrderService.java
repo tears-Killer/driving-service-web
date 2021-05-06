@@ -1,6 +1,7 @@
 package com.wj.driving.service.userorder;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.wj.driving.restfulapi.dto.drivercomment.DriverCommentDetailsDTO;
 import com.wj.driving.restfulapi.dto.userorder.OrderDetailsDTO;
 import com.wj.driving.restfulapi.request.userorder.UserOrderRequestSearch;
 import com.wj.driving.restfulapi.result.PageResult;
@@ -28,5 +29,9 @@ public class UserOrderService {
 
     public int updateOrderInfo(OrderDetailsDTO orderDetailsDTO){
         return userOrderService.updateOrderInfo(orderDetailsDTO);
+    }
+
+    public DriverCommentDetailsDTO getOrderComment(OrderDetailsDTO orderDetailsDTO){
+        return userOrderService.findCommentById(orderDetailsDTO);
     }
 }

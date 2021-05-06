@@ -15,6 +15,7 @@ public class CrosConfig {
         CorsConfiguration config = new CorsConfiguration();
         //1) 允许的域,不要写*，否则cookie就无法使用了
         config.addAllowedOrigin("http://localhost:8888");
+        config.addAllowedOrigin("http://www.sntutou.com:8088");
         //3) 允许的请求方式
         config.addAllowedMethod("OPTIONS");
         config.addAllowedMethod("POST");

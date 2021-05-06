@@ -1,5 +1,6 @@
 package com.wj.driving.controller.userorder;
 
+import com.wj.driving.restfulapi.dto.drivercomment.DriverCommentDetailsDTO;
 import com.wj.driving.restfulapi.dto.userorder.OrderDetailsDTO;
 import com.wj.driving.restfulapi.request.userorder.UserOrderRequestSearch;
 import com.wj.driving.restfulapi.result.PageResult;
@@ -37,5 +38,11 @@ public class UserOrderController {
             return BaseResult.getSuccessResult();
         }
         return BaseResult.getFailedResult("修改订单信息失败");
+    }
+
+    @PostMapping(value = "/comment")
+    public BaseResult orderComment(@RequestBody OrderDetailsDTO orderDetailsDTO){
+        DriverCommentDetailsDTO orderComment = userOrderService.getOrderComment(orderDetailsDTO);
+        return BaseResult.getSuccessResult(orderComment);
     }
 }
