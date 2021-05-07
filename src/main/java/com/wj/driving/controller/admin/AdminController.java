@@ -70,4 +70,13 @@ public class AdminController {
         }
         return BaseResult.getFailedResult(MessageErrorCode.操作失败);
     }
+
+    @RequestMapping(value = "/reset",method = RequestMethod.POST)
+    public BaseResult resetPwd(@RequestBody AdminDetailsDTO adminDetailsDTO){
+        int result = adminService.resetAdminPwd(adminDetailsDTO);
+        if(result>0){
+            return BaseResult.getSuccessResult();
+        }
+        return BaseResult.getFailedResult("重置密码失败");
+    }
 }

@@ -68,4 +68,7 @@ public class AdminService {
         return bizAdminService.deleteAdmin(id);
     }
 
+    public int resetAdminPwd(AdminDetailsDTO adminDetailsDTO){
+        return bizAdminService.resetAdminPwd(adminDetailsDTO);
+    }
 }
